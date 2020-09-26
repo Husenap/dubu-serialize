@@ -80,8 +80,10 @@ TEST(file_buffer, filesystem_path) {
 	std::vector<std::filesystem::path> expectedValue = {
 	    "dubu/portable.format",
 	    "dubu\\native.format",
+#ifdef _WIN32
 	    L"두부/wide.portable.format",
 	    L"두부\\wide.native.format",
+#endif
 	};
 
 	{
