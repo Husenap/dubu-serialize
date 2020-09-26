@@ -44,8 +44,8 @@ public:
 	void Write(const char* data, uint32_t size) override { mStream.write(data, static_cast<std::streamsize>(size)); }
 
 	template <typename T>
-	void Write(std::basic_istream<T> stream) {
-		mStream << stream;
+	void Write(const std::basic_istream<T>& stream) {
+		mStream << stream.rdbuf();
 	}
 
 private:
