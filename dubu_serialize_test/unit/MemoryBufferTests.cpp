@@ -104,7 +104,7 @@ TEST(memory_buffer, filesystem_path) {
 }
 
 TEST(memory_buffer, custom_mesh_struct) {
-	Mesh expectedValue{.indices = {1, 2, 3}, .vertices{3, 2, 1}, .normals = {2, 1, 3}};
+	Mesh expectedValue{.indices = {1, 2, 3}, .vertices{{3}, {2}, {1}}, .normals = {{2}, {1}, {3}}};
 	{
 		dubu::serialize::MemoryBuffer memoryBuffer;
 		WriteTest(memoryBuffer, expectedValue);
