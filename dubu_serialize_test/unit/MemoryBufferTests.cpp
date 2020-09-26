@@ -91,8 +91,8 @@ TEST(memory_buffer, filesystem_path) {
 	std::vector<std::filesystem::path> expectedValue = {
 	    "dubu/portable.format",
 	    "dubu\\native.format",
-	    L"두부/wide.portable.format",
-	    L"두부\\wide.native.format",
+	    L"dubu/wide.portable.format",
+	    L"dubu\\wide.native.format",
 	};
 	{
 		dubu::serialize::MemoryBuffer memoryBuffer;
