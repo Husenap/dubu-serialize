@@ -43,6 +43,11 @@ public:
 	void Read(char* data, uint32_t size) override { mStream.read(data, static_cast<std::streamsize>(size)); }
 	void Write(const char* data, uint32_t size) override { mStream.write(data, static_cast<std::streamsize>(size)); }
 
+	template <typename T>
+	void Write(std::basic_istream<T> stream) {
+		mStream << stream;
+	}
+
 private:
 	std::fstream mStream;
 	Mode         mMode = Mode::Read;
