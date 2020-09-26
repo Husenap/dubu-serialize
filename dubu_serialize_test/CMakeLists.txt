@@ -1,7 +1,9 @@
 set(target_name "dubu_serialize_test")
 
 set(src_files
-    "unit/SerializerTests.cpp")
+    "unit/Common.h"
+    "unit/MemoryBufferTests.cpp"
+    "unit/FileBufferTests.cpp")
 
 add_executable(${target_name} ${src_files})
 

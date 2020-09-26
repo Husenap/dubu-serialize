@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 
-#include "Buffer.h"
 #include "Endian.h"
+#include "buffer/Buffer.h"
 
 namespace dubu::serialize::internal {
 
@@ -53,18 +53,30 @@ struct Serializer<T, true> {
 	}
 };
 
-template <>
-struct Serializer<std::string, false> {
-	void Read(ReadBuffer& buffer, std::string& object) {
+template <typename T>
+struct Serializer<std::basic_string<T>, false> {
+	void Read(ReadBuffer& buffer, std::basic_string<T>& object) {
 		uint32_t size;
 		buffer >> size;
 		object.resize(static_cast<std::size_t>(size));
-		buffer.Read(&object[0], static_cast<std::size_t>(size));
+		buffer.Read(reinterpret_cast<char*>(&object[0]), size * sizeof(T));
 	}
-	void Write(WriteBuffer& buffer, const std::string& object) {
+	void Write(WriteBuffer& buffer, const std::basic_string<T>& object) {
 		uint32_t size = static_cast<uint32_t>(object.size());
 		buffer << size;
-		buffer.Write(&object[0], object.size());
+		buffer.Write(reinterpret_cast<const char*>(&object[0]), size * sizeof(T));
+	}
+};
+
+template <>
+struct Serializer<std::filesystem::path, false> {
+	void Read(ReadBuffer& buffer, std::filesystem::path& object) {
+		std::u8string temp;
+		buffer >> temp;
+		object = temp;
+	}
+	void Write(WriteBuffer& buffer, const std::filesystem::path& object) {
+		buffer << object.u8string();
 	}
 };
 
