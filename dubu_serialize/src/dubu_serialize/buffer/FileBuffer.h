@@ -3,21 +3,11 @@
 #include <filesystem>
 #include <fstream>
 
+#include "Buffer.h"
+
 namespace dubu::serialize {
 
-class WriteBuffer {
-public:
-	virtual ~WriteBuffer()                                   = default;
-	virtual void Write(const char* buffer, std::size_t size) = 0;
-};
-
-class ReadBuffer {
-public:
-	virtual ~ReadBuffer()                             = default;
-	virtual void Read(char* buffer, std::size_t size) = 0;
-};
-
-class FileBuffer : public WriteBuffer, public ReadBuffer {
+class FileBuffer : public ReadBuffer, public WriteBuffer {
 public:
 	enum class Mode { Read, Write };
 
@@ -50,8 +40,8 @@ public:
 		}
 	}
 
-	void Write(const char* buffer, std::size_t size) override { mStream.write(buffer, size); }
-	void Read(char* buffer, std::size_t size) override { mStream.read(buffer, size); }
+	void Read(char* data, uint32_t size) override { mStream.read(data, static_cast<std::streamsize>(size)); }
+	void Write(const char* data, uint32_t size) override { mStream.write(data, static_cast<std::streamsize>(size)); }
 
 private:
 	std::fstream mStream;
