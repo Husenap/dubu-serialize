@@ -50,8 +50,10 @@ public:
 		}
 	}
 
-	void Write(const char* buffer, std::size_t size) override { mStream.write(buffer, size); }
-	void Read(char* buffer, std::size_t size) override { mStream.read(buffer, size); }
+	void Write(const char* buffer, std::size_t size) override {
+		mStream.write(buffer, static_cast<std::streamsize>(size));
+	}
+	void Read(char* buffer, std::size_t size) override { mStream.read(buffer, static_cast<std::streamsize>(size)); }
 
 private:
 	std::fstream mStream;
