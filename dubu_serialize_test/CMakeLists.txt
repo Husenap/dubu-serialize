@@ -8,8 +8,6 @@ set(src_files
 add_executable(${target_name} ${src_files})
 
 target_link_libraries(${target_name}
-    gtest
-    gmock
     gmock_main
     dubu_serialize)
 
