@@ -68,11 +68,11 @@ struct Serializer<std::basic_string<T>, false> {
 template <>
 struct Serializer<std::filesystem::path, false> {
 	void Read(ReadBuffer& buffer, std::filesystem::path& object) {
-		std::u16string temp;
+		std::wstring temp;
 		buffer >> temp;
 		object = temp;
 	}
-	void Write(WriteBuffer& buffer, const std::filesystem::path& object) { buffer << object.u16string(); }
+	void Write(WriteBuffer& buffer, const std::filesystem::path& object) { buffer << object.wstring(); }
 };
 
 template <typename T>
