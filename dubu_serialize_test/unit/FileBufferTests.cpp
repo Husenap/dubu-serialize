@@ -98,8 +98,7 @@ TEST(file_buffer, filesystem_path) {
 
 TEST(file_buffer, custom_mesh_struct) {
 	const char* fileName = "custom_mesh_struct.bin";
-
-	Mesh expectedValue{.indices = {1, 2, 3}, .vertices{3, 2, 1}, .normals = {2, 1, 3}};
+	Mesh        expectedValue{.indices = {1, 2, 3}, .vertices{{3}, {2}, {1}}, .normals = {{2}, {1}, {3}}};
 
 	{
 		dubu::serialize::FileBuffer fileBuffer(fileName, dubu::serialize::FileBuffer::Mode::Write);
@@ -110,3 +109,4 @@ TEST(file_buffer, custom_mesh_struct) {
 		ReadTest(fileBuffer, expectedValue);
 	}
 }
+
