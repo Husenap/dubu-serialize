@@ -35,12 +35,12 @@ template <typename T>
 struct Serializer<T, true> {
 	void Read(ReadBuffer& buffer, T& object) {
 		buffer.Read(reinterpret_cast<char*>(&object), sizeof(T));
-		if (Endian::big) {
+		if constexpr (Endian::big) {
 			FlipEndian(object);
 		}
 	}
 	void Write(WriteBuffer& buffer, const T& object) {
-		if (Endian::big) {
+		if constexpr (Endian::big) {
 			T objectCopy(object);
 			FlipEndian(objectCopy);
 			buffer.Write(reinterpret_cast<const char*>(&objectCopy), sizeof(T));
