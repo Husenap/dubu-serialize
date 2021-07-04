@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-#include "Buffer.h"
+#include "Buffer.hpp"
 
 namespace dubu::serialize {
 

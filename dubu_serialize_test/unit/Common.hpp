@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-#include <dubu_serialize/dubu_serialize.h>
+#include <dubu_serialize/dubu_serialize.hpp>
 #include <gmock/gmock.h>
 
 template <typename T>
@@ -58,4 +58,3 @@ struct Mesh {
 inline bool operator==(const Mesh& lhs, const Mesh& rhs) {
 	return (lhs.indices == rhs.indices) && (lhs.vertices == rhs.vertices) && (lhs.normals == rhs.normals);
 }
-

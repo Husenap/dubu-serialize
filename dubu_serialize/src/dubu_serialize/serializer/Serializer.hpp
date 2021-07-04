@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Endian.h"
-#include "dubu_serialize/buffer/Buffer.h"
+#include "Endian.hpp"
+#include "dubu_serialize/buffer/Buffer.hpp"
 
 namespace dubu::serialize::internal {
 

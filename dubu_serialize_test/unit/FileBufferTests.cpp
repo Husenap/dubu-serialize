@@ -1,4 +1,4 @@
-﻿#include "Common.h"
+﻿#include "Common.hpp"
 
 TEST(file_buffer, single_int) {
 	const char* fileName      = "single_int.bin";
@@ -109,4 +109,3 @@ TEST(file_buffer, custom_mesh_struct) {
 		ReadTest(fileBuffer, expectedValue);
 	}
 }
-

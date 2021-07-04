@@ -1,16 +1,16 @@
 set(target_name "dubu_serialize")
 
 set(src_buffer
-    "src/dubu_serialize/buffer/Buffer.h"
-    "src/dubu_serialize/buffer/FileBuffer.h"
-    "src/dubu_serialize/buffer/MemoryBuffer.h")
+    "src/dubu_serialize/buffer/Buffer.hpp"
+    "src/dubu_serialize/buffer/FileBuffer.hpp"
+    "src/dubu_serialize/buffer/MemoryBuffer.hpp")
 
 set(src_serializer
-    "src/dubu_serialize/serializer/Endian.h"
-    "src/dubu_serialize/serializer/Serializer.h")
+    "src/dubu_serialize/serializer/Endian.hpp"
+    "src/dubu_serialize/serializer/Serializer.hpp")
 
 set(src_serialize
-    "src/dubu_serialize/dubu_serialize.h"
+    "src/dubu_serialize/dubu_serialize.hpp"
     "src/dummy.cpp")
 
 set(src_files

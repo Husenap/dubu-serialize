@@ -1,4 +1,4 @@
-﻿#include "Common.h"
+﻿#include "Common.hpp"
 
 TEST(memory_buffer, single_int) {
 	uint32_t expectedValue  = 0xCC00FFEE;
