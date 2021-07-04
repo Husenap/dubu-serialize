@@ -107,4 +107,18 @@ struct Serializer<std::array<T, Size>, false> {
 	}
 };
 
+template <typename T, std::size_t Size>
+struct Serializer<T[Size], false> {
+	void Read(ReadBuffer& buffer, T arr[Size]) {
+		for (size_t i = 0; i < Size; ++i) {
+			buffer >> arr[i];
+		}
+	}
+	void Write(WriteBuffer& buffer, const T arr[Size]) {
+		for (size_t i = 0; i < Size; ++i) {
+			buffer << arr[i];
+		}
+	}
+};
+
 }  // namespace dubu::serialize::internal
