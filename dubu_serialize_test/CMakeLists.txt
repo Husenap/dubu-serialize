@@ -1,7 +1,7 @@
 set(target_name "dubu_serialize_test")
 
 set(src_files
-    "unit/Common.h"
+    "unit/Common.hpp"
     "unit/MemoryBufferTests.cpp"
     "unit/FileBufferTests.cpp")
 
